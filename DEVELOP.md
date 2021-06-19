@@ -17,3 +17,11 @@ scp 侯小益简历20.8.pdf  eric@houxiaoyi.cn:/media/data/eric/docker/nginx/htm
 ```shell
 scp -r assets/ eric@houxiaoyi.cn:/media/data/eric/docker/nginx/html
 ```
+### 上传图片
+```shell
+scp  assets/images/IMG_20210209_203748.jpg eric@houxiaoyi.cn:/media/data/eric/docker/nginx/html/images
+```
+
+```shell
+scp  assets/images/link-999.svg  eric@houxiaoyi.cn:/media/data/eric/docker/nginx/html/assets/images
+```
