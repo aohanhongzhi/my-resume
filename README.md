@@ -20,3 +20,6 @@ https://www.feishu.cn/hc/zh-CN/articles/360049067374
 
 ˙主要是通讯工具和文档的结合。互联网公司内部有很好的解决方案。但是对于初创的团队来说，这个就需要借助现成的服务了。比如，腾讯文档可以@QQ好友，飞书，我来笔记，羽雀文档等。
 
+## 开发技术栈
+
+[【面朝大厂】面试官：你能说说Ribbon的负载均衡策略及原理嘛？](https://mp.weixin.qq.com/s/USf-9ug9JodPMVcXgMGKTQ)
