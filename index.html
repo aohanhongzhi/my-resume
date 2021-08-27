@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script>
         function loading() {
             document.getElementsByClassName('avatar')[0].style.display = 'block';
@@ -32,13 +37,13 @@
 
 <body>
     <div id="app">
-    <header class="header"></header>
+        <header class="header"></header>
 
-    <article class="container">
-        <section class="side" id="side">
+        <article class="container">
+            <section class="side" id="side">
 
-            <!-- 左栏固定开关，记得及时删除这段代码 Start-->
-            <!-- <label class="switch" style="display: none;" onchange="switchFixed()">
+                <!-- 左栏固定开关，记得及时删除这段代码 Start-->
+                <!-- <label class="switch" style="display: none;" onchange="switchFixed()">
                 <script type="text/javaScript">
                     function switchFixed(){
                         var value = document.getElementById('side').style.position === 'fixed' ? 'absolute' : 'fixed';
@@ -48,187 +53,186 @@
                 <input id="cb" type="checkbox">
                 <span class="slider round"></span>
             </label> -->
-            <style>
-                @media (min-width: 750px) {
-                    .switch {
-                        position: relative;
-                        display: inline-block !important;
-                        width: 60px;
-                        height: 34px;
-                    }
+                <style>
+                    @media (min-width: 750px) {
+                        .switch {
+                            position: relative;
+                            display: inline-block !important;
+                            width: 60px;
+                            height: 34px;
+                        }
 
-                    .switch input {
-                        display: none;
-                    }
+                        .switch input {
+                            display: none;
+                        }
 
-                    .slider {
-                        position: absolute;
-                        cursor: pointer;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background-color: #ccc;
-                        -webkit-transition: .4s;
-                        transition: .4s;
-                    }
+                        .slider {
+                            position: absolute;
+                            cursor: pointer;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background-color: #ccc;
+                            -webkit-transition: .4s;
+                            transition: .4s;
+                        }
 
-                    .slider:before {
-                        position: absolute;
-                        content: "";
-                        height: 26px;
-                        width: 26px;
-                        left: 4px;
-                        bottom: 4px;
-                        background-color: white;
-                        -webkit-transition: .4s;
-                        transition: .4s;
-                    }
+                        .slider:before {
+                            position: absolute;
+                            content: "";
+                            height: 26px;
+                            width: 26px;
+                            left: 4px;
+                            bottom: 4px;
+                            background-color: white;
+                            -webkit-transition: .4s;
+                            transition: .4s;
+                        }
 
-                    input:checked+.slider {
-                        background-color: #1abc9c;
-                    }
+                        input:checked+.slider {
+                            background-color: #1abc9c;
+                        }
 
-                    input:focus+.slider {
-                        box-shadow: 0 0 1px #1abc9c;
-                    }
+                        input:focus+.slider {
+                            box-shadow: 0 0 1px #1abc9c;
+                        }
 
-                    input:checked+.slider:before {
-                        -webkit-transform: translateX(26px);
-                        -ms-transform: translateX(26px);
-                        transform: translateX(26px);
-                    }
+                        input:checked+.slider:before {
+                            -webkit-transform: translateX(26px);
+                            -ms-transform: translateX(26px);
+                            transform: translateX(26px);
+                        }
 
-                    .slider.round {
-                        border-radius: 34px;
-                    }
+                        .slider.round {
+                            border-radius: 34px;
+                        }
 
-                    .slider.round:before {
-                        border-radius: 50%;
+                        .slider.round:before {
+                            border-radius: 50%;
+                        }
                     }
-                }
-            </style>
-            <!-- 左侧固定开关，记得及时删除这段代码 End-->
+                </style>
+                <!-- 左侧固定开关，记得及时删除这段代码 End-->
 
-            <!-- 个人肖像 -->
-            <section class="me">
-                <section class="portrait">
-                    <!-- 头像照片 -->
-                    <img class="avatar" src="assets/images/avatar.jpg" style="display: block;">
+                <!-- 个人肖像 -->
+                <section class="me">
+                    <section class="portrait">
+                        <!-- 头像照片 -->
+                        <img class="avatar" src="assets/images/avatar.jpg" style="display: block;">
+                    </section>
+
+                    <h1 class="name">侯小益</h1>
+                    <h4 class="info-job">研发工程师 / {{ workLife }}年 / 上海 </h4>
+
+
                 </section>
 
-                <h1 class="name">侯小益</h1>
-                <h4 class="info-job">研发工程师 / {{ workLife }}年 / 上海 </h4>
-                
+                <!-- 基本信息 -->
+                <section class="profile info-unit">
+                    <h2>
+                        <i class="fa fa-user" aria-hidden="true"></i>基本信息
+                    </h2>
+                    <hr />
+                    <ul>
+                        <li>
+                            <label>性别</label>
+                            <span>男</span>
+                        </li>
+                        <li>
+                            <label>生辰</label>
+                            <span id='age'></span>
+                        </li>
+                        <li>
+                            <label>证书</label>
+                            <span>CISP注册安全信息工程师</span>
+                        </li>
 
-            </section>
+                    </ul>
+                </section>
 
-            <!-- 基本信息 -->
-            <section class="profile info-unit">
-                <h2>
-                    <i class="fa fa-user" aria-hidden="true"></i>基本信息
-                </h2>
-                <hr />
-                <ul>
-                    <li>
-                        <label>性别</label>
-                        <span>男</span>
-                    </li>
-                    <li>
-                        <label>生辰</label>
-                        <span id = 'age' ></span>
-                    </li>
-                    <li>
-                        <label>证书</label>
-                        <span>CISP注册安全信息工程师</span>
-                    </li>
-                  
-                </ul>
-            </section>
-
-            <!-- 联系方式 -->
-            <section class="contact info-unit">
-                <h2>
-                    <i class="fa fa-phone" aria-hidden="true"></i>联系方式
-                </h2>
-                <hr />
-                <ul>
-                    <li>
-                        <label>手机(微信)</label>
-                        <a href="tel:18010472947" target="_blank">18010472947</a>
-                    </li>
-                    <li>
-                        <label>邮箱</label>
-                        <a href="mailto:aohanhongzhi@qq.com" target="_blank">aohanhongzhi@qq.com</a>
-                    </li>
-                    <li>
-                        <label>QQ</label>
-                        <a href="http://houxiaoyi.cn/" target="_blank">3227556776</a>
-                    </li>
-                    <!-- <li>
+                <!-- 联系方式 -->
+                <section class="contact info-unit">
+                    <h2>
+                        <i class="fa fa-phone" aria-hidden="true"></i>联系方式
+                    </h2>
+                    <hr />
+                    <ul>
+                        <li>
+                            <label>手机(微信)</label>
+                            <a href="tel:18010472947" target="_blank">18010472947</a>
+                        </li>
+                        <li>
+                            <label>邮箱</label>
+                            <a href="mailto:aohanhongzhi@qq.com" target="_blank">aohanhongzhi@qq.com</a>
+                        </li>
+                        <li>
+                            <label>QQ</label>
+                            <a href="http://houxiaoyi.cn/" target="_blank">3227556776</a>
+                        </li>
+                        <!-- <li>
                         <label>Gitee</label>
                         <a href="https://gitee.com/aohanongzhi" target="_blank">https://gitee.com/aohanongzhi</a>
                     </li> -->
-                </ul>
-            </section>
+                    </ul>
+                </section>
 
-            <!-- 技能点 -->
-            <section class="skill info-unit">
-                <h2>
-                    <i class="fa fa-code" aria-hidden="true"></i>技能点
-                </h2>
-                <hr />
-                <ul>
-                    <li>
-                        <label>Java</label>
-                        <progress value="80" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>Spring</label>
-                        <progress value="75" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>Mybatis</label>
-                        <progress value="75" max="100"></progress>
-                    </li>
-                    <li>
-                        <label><a href="https://v3.cn.vuejs.org/" target="_blank">Vue</a></label>
-                        <progress value="70" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>爬虫</label>
-                        <progress value="70" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>Android</label>
-                        <progress value="60" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>JavaFx/PyQt</label>
-                        <progress value="65" max="100"></progress>
-                    </li>
-                </ul>
-            </section>
+                <!-- 技能点 -->
+                <section class="skill info-unit">
+                    <h2>
+                        <i class="fa fa-code" aria-hidden="true"></i>技能点
+                    </h2>
+                    <hr />
+                    <ul>
+                        <li>
+                            <label>Java</label>
+                            <progress value="80" max="100"></progress>
+                        </li>
+                        <li>
+                            <label>Spring</label>
+                            <progress value="75" max="100"></progress>
+                        </li>
+                        <li>
+                            <label>Mybatis</label>
+                            <progress value="75" max="100"></progress>
+                        </li>
+                        <li>
+                            <label><a href="https://v3.cn.vuejs.org/" target="_blank">Vue</a></label>
+                            <progress value="70" max="100"></progress>
+                        </li>
+                        <li>
+                            <label>爬虫</label>
+                            <progress value="70" max="100"></progress>
+                        </li>
+                        <li>
+                            <label>Android</label>
+                            <progress value="60" max="100"></progress>
+                        </li>
+                        <li>
+                            <label>JavaFx/PyQt</label>
+                            <progress value="65" max="100"></progress>
+                        </li>
+                    </ul>
+                </section>
 
-            <section class="qrcode info-unit">
-                <h2><i class="fa fa-qrcode" aria-hidden="true"></i>电话不方便接哈，加微信聊</h2>
-                <hr />
-                <img src="assets/images/wechatqrcode.jpg"
-                    style="width: 100%;" alt="">
-            </section>
+                <section class="qrcode info-unit">
+                    <h2><i class="fa fa-qrcode" aria-hidden="true"></i>电话不方便接哈，加微信聊</h2>
+                    <hr />
+                    <img src="assets/images/wechatqrcode.jpg" style="width: 100%;" alt="">
+                </section>
 
-            <section class="qrcode info-unit">
-                <h2><i class="fa fa-battery-3" aria-hidden="true"></i>拥抱955，拒绝996</h2>
-                <hr />
-                不做社会主义<b>加</b>班人
-             <a  href="https://996.icu/#/zh_CN"  target="_blank" ><img src="/assets/images/link-999.svg"></a>
-             不太想加班，怕你们卷不过我。按照法律给加班费也是可以接受的，拒绝白嫖。
+                <section class="qrcode info-unit">
+                    <h2><i class="fa fa-battery-3" aria-hidden="true"></i>拥抱955，拒绝996</h2>
+                    <hr />
+                    不做社会主义<b>加</b>班人
+                    <a href="https://996.icu/#/zh_CN" target="_blank"><img src="/assets/images/link-999.svg"></a>
+                    不太想加班，怕你们卷不过我。按照法律给加班费也是可以接受的，拒绝白嫖。
 
-                <!-- <a style="color: #DE335E;" href="https://996.icu/#/zh_CN"  target="_blank">https://996.icu/</a> -->
-            </section>
+                    <!-- <a style="color: #DE335E;" href="https://996.icu/#/zh_CN"  target="_blank">https://996.icu/</a> -->
+                </section>
 
-            <!-- 研究过的开源项目 -->
-             <!-- <div class="stack info-unit">
+                <!-- 研究过的开源项目 -->
+                <!-- <div class="stack info-unit">
                     <h2><i class="fa fa-code" aria-hidden="true"></i>研究和贡献过的开源项目</h2>
                     <hr/>
                     <ul>
@@ -250,215 +254,236 @@
                         </li>
                     </ul>
                 </div>  -->
-        </section>
-
-        <section class="main">
-
-            <!-- 教育经历 -->
-            <section class="edu info-unit">
-                <h2>
-                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>教育经历
-                </h2>
-                <hr />
-                <ul>
-                    <li>
-                        <h3>
-                            <span>中国石油大学（北京） － 信息管理与信息系统</span>
-                            <time>2015.9-2019.6</time>
-                        </h3>
-                        <p>211
-                            <mark>全日制统招</mark>本科
-                    </li>
-                </ul>
             </section>
 
-            <!-- 工作经历 -->
-            <section class="work info-unit">
-                <h2>
-                    <i class="fa fa-crop" aria-hidden="true"></i>工作经历
-                </h2>
-                <hr />
-                <ul>
-                    <li>
-                        <h3>
-                            <span>美团－后台开发工程师</span>
-                            <time>2021.03.01-2021.08.18</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>参与内容中台建设，偏业务开发，海量数据处理
-                            </li>
-                             <li>维护内容标注平台，推荐运营平台，内容门槛建设
-                            </li>
-                        </ul> 
-                    </li>
-                    <li>
-                        <h3>
-                            <span>中国电信－研发工程师</span>
-                            <time>2019.07-2021.03</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>年度绩效个人排名居<b>近200人</b>第二
-                            </li>
-                            <li>代码审计团队技术和项目负责人，带领多个具有四五年开发经验的人
-                            </li>
-                            <li>负责项目的架构设计和第一行代码编写，解决团队核心技术难题</li>
-                            <li>个人购买并且<b>泛读</b>了<a target="_blank" href="assets/images/IMG_20210209_203748.jpg">100本纸质技术类书籍</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
+            <section class="main">
 
-            <!-- 项目经验 -->
-            <section class="project info-unit">
-                <h2>
-                    <i class="fa fa-terminal" aria-hidden="true"></i>项目经历
-                </h2>
-                <hr />
-                <ul>
-                    <li>
-                        <h3>
-                            <span>云道-代码审计模块</span>
-                            <span class="link">
-                                <a href="#" target="_blank">负责人</a>
-                            </span>
-                            <time>2019.07-2021.02</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>技术栈：SpringCloud(Eureka，Zuul，Ribbon，Admin)+Mybatis-plus</li>
-                            <li>
-                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                中国央企第一个上云项目，主要是基于微服务SpringCloud的Eureka，Zuul，Ribbon，SpringAdmin服务治理部分+基于SpringBoot开发的业务部分。
-                                <br />
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                代码审计团队技术和项目负责人，带领多个具有四五年开发经验的人，团队人数7,8人
-                                <br />
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                完成从
-                                <mark>“调研-设计-实现-文档”</mark>等工作，主要负责系统原型、功能框架及数据提交流程、元数据及源数据的管理与共享方案的设计以及系统开发等工作
-                                <br />
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                <a href="https://mp.weixin.qq.com/s/qzQ6kb82rIj6Rzr0C7CMZw" target="_blank">
-                                微服务系统架构设计，集群部署，故障转移，灰度发布，版本兼容。采用 Zuul+SpringRetry
-                                </a>
-                                <br />
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                <a href="https://mp.weixin.qq.com/s/HAuJ4Mth2hHnKj750LmK7w" target="_blank">基于jackson自定义枚举序列化，协调前后端以及数据库的枚举优化存储，优化整个流程</a>
-                            </li>
-                        </ul>
-                    </li>
-        
-                     <li>
-                        <h3>
-                            <span>简印-在线云打印</span>
-                            <span class="link">
-                                <a href="https://easyprint.vip:8443/" target="_blank">https://easyprint.vip/</a>
-                            </span>
-                            <time>2017.02-2019.06</time>
-                        </h3>
-                        <ul class="info-content">
-                            <li>技术栈：SpringBoot+Mybatis-plus</li>
-                            <li>
-                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                大三开发的在线云打印项目，主要解决打印病毒传播和打印店排队问题。
-                                <br />
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                完成从
-                                <mark>“调研-设计-实现-文档”</mark>等工作，主要负责系统原型、功能框架及数据提交流程、元数据及源数据的管理与共享方案的设计以及系统开发等工作
-                                <br />
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-             <!-- 专业技能 -->
-            <section class="work info-unit">
-                <h2>
-                    <i class="fa fa-pencil" aria-hidden="true"></i>专业技能
-                </h2>
-                <hr />
-                <p><ul>
-                    <li>Java：<b>了解 </b><a href="https://docs.qq.com/doc/DSFJEVHJTTU9BWWlt" target="_blank">JDK调优</a>，JVM，JMM原理，<a href="https://gitee.com/aohanhongzhi/study/blob/dumi/src/并发/线程优化.md"  target="_blank">多线程并发</a>，锁优化，设计模式，<a href="https://www.jianshu.com/p/d7c3185dcb5f" target="_blank">LRU</a>
-                    </li>
-                     <li>SpringCloud：<b>了解</b>Spring底层<a href="https://gitee.com/eric-tutorial/easy-ioc" target="_blank">IOC</a>，DI，AOP的实现原理，Eureka，Zuul，Ribbon，Admin
-                     </li>
-                     <li>
-                        Mybatis：<b>了解</b>mybatis源码，<b>了解</b>ORM底层实现方式
-                     </li>
-                     <li><a href="https://docs.qq.com/doc/DSHZTaGZsTWpCVnN0" target="_blank">Golang</a>：<a target="_blank" href="https://github.com/gin-gonic/gin">gin</a>，beego，<a href="https://gorm.io/zh_CN/docs/index.html" target="_blank">gorm</a> 
-                    </li>
-                     <li><a target="_blank" href="https://gitmind.cn/app/doc/d621515016">MySQL：<b>了解</b>性能优化，索引优化，事务，日志，锁机制，MVCC</a>
-                    </li>
-                     <li>Redis：<b>了解</b>底层原理，<a href="https://gitmind.cn/app/doc/7111516385" target='_blank'>熟悉多种应用场景。</a>缓存，分布式锁，去重。
-                    </li>
-                     <li><b>了解</b>Python，Vue，React，Android，<a href="https://docs.qq.com/doc/DSGZQeVdSd3dHbmZV" target='_blank'>Nginx</a>，<a href="https://docs.qq.com/doc/DSHNlVkZtR09sRG5p"  target='_blank'>Docker</a>,，k8s，Jenkins，Gradle，HDFS，Hive，ELK等
-                    </li>
-                    <li>日常使用<a href="https://www.deepin.org/zh/" target='_blank'>deepin</a>，熟悉linux系统命令
-                    </li>
+                <!-- 教育经历 -->
+                <section class="edu info-unit">
+                    <h2>
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>教育经历
+                    </h2>
+                    <hr />
+                    <ul>
+                        <li>
+                            <h3>
+                                <span>中国石油大学（北京） － 信息管理与信息系统</span>
+                                <time>2015.9-2019.6</time>
+                            </h3>
+                            <p>211
+                                <mark>全日制统招</mark>本科
+                        </li>
                     </ul>
-                </p>
-            </section>
+                </section>
 
-            <!-- 自我评价 -->
-            <section class="work info-unit">
-                <h2>
-                    <i class="fa fa-archive" aria-hidden="true"></i>自我评价/期望
-                </h2>
-                <hr />
-                <p><ul>
-                    <li>开朗乐观，朝气蓬勃，环境适应能力强，外企 IBM 实习过，央企 中国电信 工作过
-                    </li>
-                     <li>喜欢看书，爱好折腾代码，贡献过开源项目
-                    </li>
-                    <li>学习能力强，沟通能力强，具备良好的问题分析和解决能力，对新技术有敏感性并愿意致力于新技术研究。
-                    </li>
-                     <li>个人执行能力很强，讲究效率，不喜欢用时间弥补效率。希望工作965这种，不吃青春饭(要活100岁呢)，生活与工作平衡。有时间去享受生活，去看看书，研究技术。
-                    </li>
+                <!-- 工作经历 -->
+                <section class="work info-unit">
+                    <h2>
+                        <i class="fa fa-crop" aria-hidden="true"></i>工作经历
+                    </h2>
+                    <hr />
+                    <ul>
+                        <li>
+                            <h3>
+                                <span>美团－后台开发工程师</span>
+                                <time>2021.03.01-2021.08.18</time>
+                            </h3>
+                            <ul class="info-content">
+                                <li>参与内容中台建设，偏业务开发，海量数据处理
+                                </li>
+                                <li>维护内容标注平台，推荐运营平台，内容门槛建设
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>
+                                <span>中国电信－研发工程师</span>
+                                <time>2019.07-2021.03</time>
+                            </h3>
+                            <ul class="info-content">
+                                <li>年度绩效个人排名居<b>近200人</b>第二
+                                </li>
+                                <li>代码审计团队技术和项目负责人，带领多个具有四五年开发经验的人
+                                </li>
+                                <li>负责项目的架构设计和第一行代码编写，解决团队核心技术难题</li>
+                                <li>个人购买并且<b>泛读</b>了<a target="_blank"
+                                        href="assets/images/IMG_20210209_203748.jpg">100本纸质技术类书籍</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
-                </p>
+                </section>
+
+                <!-- 项目经验 -->
+                <section class="project info-unit">
+                    <h2>
+                        <i class="fa fa-terminal" aria-hidden="true"></i>项目经历
+                    </h2>
+                    <hr />
+                    <ul>
+                        <li>
+                            <h3>
+                                <span>云道-代码审计模块</span>
+                                <span class="link">
+                                    <a href="#" target="_blank">负责人</a>
+                                </span>
+                                <time>2019.07-2021.02</time>
+                            </h3>
+                            <ul class="info-content">
+                                <li>技术栈：SpringCloud(Eureka，Zuul，Ribbon，Admin)+Mybatis-plus</li>
+                                <li>
+                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                    中国央企第一个上云项目，主要是基于微服务SpringCloud的Eureka，Zuul，Ribbon，SpringAdmin服务治理部分+基于SpringBoot开发的业务部分。
+                                    <br />
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    代码审计团队技术和项目负责人，带领多个具有四五年开发经验的人，团队人数7,8人
+                                    <br />
+                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                    完成从
+                                    <mark>“调研-设计-实现-文档”</mark>等工作，主要负责系统原型、功能框架及数据提交流程、元数据及源数据的管理与共享方案的设计以及系统开发等工作
+                                    <br />
+                                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                    <a href="https://mp.weixin.qq.com/s/qzQ6kb82rIj6Rzr0C7CMZw" target="_blank">
+                                        微服务系统架构设计，集群部署，故障转移，灰度发布，版本兼容。采用 Zuul+SpringRetry
+                                    </a>
+                                    <br />
+                                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                    <a href="https://mp.weixin.qq.com/s/HAuJ4Mth2hHnKj750LmK7w"
+                                        target="_blank">基于jackson自定义枚举序列化，协调前后端以及数据库的枚举优化存储，优化整个流程</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h3>
+                                <span>简印-在线云打印</span>
+                                <span class="link">
+                                    <a href="https://easyprint.vip:8443/" target="_blank">https://easyprint.vip/</a>
+                                </span>
+                                <time>2017.02-2019.06</time>
+                            </h3>
+                            <ul class="info-content">
+                                <li>技术栈：SpringBoot+Mybatis-plus</li>
+                                <li>
+                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                    大三开发的在线云打印项目，主要解决打印病毒传播和打印店排队问题。
+                                    <br />
+                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                    完成从
+                                    <mark>“调研-设计-实现-文档”</mark>等工作，主要负责系统原型、功能框架及数据提交流程、元数据及源数据的管理与共享方案的设计以及系统开发等工作
+                                    <br />
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <!-- 专业技能 -->
+                <section class="work info-unit">
+                    <h2>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>专业技能
+                    </h2>
+                    <hr />
+                    <p>
+                        <ul>
+                            <li>Java：<b>了解 </b><a href="https://docs.qq.com/doc/DSFJEVHJTTU9BWWlt"
+                                    target="_blank">JDK调优</a>，JVM，JMM原理，<a
+                                    href="https://gitee.com/aohanhongzhi/study/blob/dumi/src/并发/线程优化.md"
+                                    target="_blank">多线程并发</a>，锁优化，设计模式，<a href="https://www.jianshu.com/p/d7c3185dcb5f"
+                                    target="_blank">LRU</a>
+                            </li>
+                            <li>SpringCloud：<b>了解</b>Spring底层<a href="https://gitee.com/eric-tutorial/easy-ioc"
+                                    target="_blank">IOC</a>，DI，AOP的实现原理，Eureka，Zuul，Ribbon，Admin
+                            </li>
+                            <li>
+                                Mybatis：<b>了解</b>mybatis源码，<b>了解</b>ORM底层实现方式
+                            </li>
+                            <li><a href="https://docs.qq.com/doc/DSHZTaGZsTWpCVnN0" target="_blank">Golang</a>：<a
+                                    target="_blank" href="https://github.com/gin-gonic/gin">gin</a>，beego，<a
+                                    href="https://gorm.io/zh_CN/docs/index.html" target="_blank">gorm</a>
+                            </li>
+                            <li><a target="_blank"
+                                    href="https://gitmind.cn/app/doc/d621515016">MySQL：<b>了解</b>性能优化，索引优化，事务，日志，锁机制，MVCC</a>
+                            </li>
+                            <li>Redis：<b>了解</b>底层原理，<a href="https://gitmind.cn/app/doc/7111516385"
+                                    target='_blank'>熟悉多种应用场景。</a>缓存，分布式锁，去重。
+                            </li>
+                            <li><b>了解</b>Python，Vue，React，Android，<a href="https://docs.qq.com/doc/DSGZQeVdSd3dHbmZV"
+                                    target='_blank'>Nginx</a>，<a href="https://docs.qq.com/doc/DSHNlVkZtR09sRG5p"
+                                    target='_blank'>Docker</a>,，k8s，Jenkins，Gradle，HDFS，Hive，ELK等
+                            </li>
+                            <li>日常使用<a href="https://www.deepin.org/zh/" target='_blank'>deepin</a>，熟悉linux系统命令
+                            </li>
+                        </ul>
+                    </p>
+                </section>
+
+                <!-- 自我评价 -->
+                <section class="work info-unit">
+                    <h2>
+                        <i class="fa fa-archive" aria-hidden="true"></i>自我评价/期望
+                    </h2>
+                    <hr />
+                    <p>
+                        <ul>
+                            <li>开朗乐观，朝气蓬勃，环境适应能力强，外企 IBM 实习过，央企 中国电信 工作过
+                            </li>
+                            <li>喜欢看书，爱好折腾代码，贡献过开源项目
+                            </li>
+                            <li>学习能力强，沟通能力强，具备良好的问题分析和解决能力，对新技术有敏感性并愿意致力于新技术研究。
+                            </li>
+                            <li>个人执行能力很强，讲究效率，不喜欢用时间弥补效率。希望工作965这种，不吃青春饭(要活100岁呢)，生活与工作平衡。有时间去享受生活，去看看书，研究技术。
+                            </li>
+                        </ul>
+                    </p>
+                </section>
             </section>
-        </section>
-    </article>
+        </article>
+
+        <footer class="footer">
+            <p> <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备18028985号</a> © 2021 侯小益.文档最后更新时间为
+                <time>2021年04月20日</time>.
+                <a href="./侯小益简历21.1.pdf" target="_blank">
+                    <font color="#D90013">简历下载</font>
+                </a>
+                <span id="busuanzi_container_site_pv">
+                    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+                </span>
+            </p>
+        </footer>
+
+        <!-- 侧栏 -->
+        <aside>
+            <ul>
+                <li>
+                    <a href="./侯小益简历21.1.pdf" target="_blank">
+                        <font color="#D90013">简历下载</font>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://gitee.com/aohanhongzhi" target="_blank">Gitee</a>
+                </li>
+                <li>
+                    <a href="https://github.com/aohanhongzhi" target="_blank">Github</a>
+                </li>
+                <li>
+                    <a href="https://www.jianshu.com/u/6bb2c45a0d7e" target="_blank">简书</a>
+                </li>
+                <li>
+                    <a href="https://gitee.com/ejlchina-zhxu/okhttps" target="_blank">okhttps</a>
+                </li>
+                <li>
+                    <a href="https://gitee.com/framework-collection/rexdb/blob/dev/CHANGRLOG.md"
+                        target="_blank">rexdb</a>
+                </li>
+                <li>
+                    <a href="https://support.qq.com/product/319140" target="_blank">建议</a>
+                </li>
 
 
+            </ul>
+        </aside>
 
-    <footer class="footer">
-        <p> <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备18028985号</a> © 2021 侯小益.文档最后更新时间为
-            <time>2021年04月20日</time>.
-             <a href="./侯小益简历21.1.pdf" target="_blank"><font color="#D90013">简历下载</font></a>
-        </p>
-    </footer>
-
-    <!-- 侧栏 -->
-    <aside>
-        <ul>
-            <li>
-                <a href="./侯小益简历21.1.pdf" target="_blank"><font color="#D90013">简历下载</font></a>
-            </li>
-            <li>
-                <a href="https://gitee.com/aohanhongzhi" target="_blank">Gitee</a>
-            </li>
-               <li>
-                <a href="https://github.com/aohanhongzhi" target="_blank">Github</a>
-            </li>
-            <li>
-                <a href="https://www.jianshu.com/u/6bb2c45a0d7e" target="_blank">简书</a>
-            </li>
-             <li>
-                <a href="https://gitee.com/ejlchina-zhxu/okhttps" target="_blank">okhttps</a>
-            </li>
-              <li>
-                <a href="https://gitee.com/framework-collection/rexdb/blob/dev/CHANGRLOG.md" target="_blank">rexdb</a>
-            </li>
-            <li>
-                <a href="https://support.qq.com/product/319140" target="_blank">建议</a>
-            </li>
-
-            
-        </ul>
-    </aside>
-
-</div>
+    </div>
 
     <script src="./assets/js/index.js"></script>
     <script>
@@ -466,16 +491,36 @@
             el: '#app',
             data: {
                 // workLife: 'Hello Vue!'
-               },
-               computed:{
-                workLife(){
-                    var date=new Date;
+                downtemp: false
+            },
+            computed: {
+                workLife() {
+                    var date = new Date;
                     var y = date.getFullYear()
-                    return y-2019;
+                    return y - 2019;
                 }
+            },
+            methods: {
+                open() {
+                    this.$confirm('页脚可以下载简历文件', '提示', {
+                        confirmButtonText: '查看当前网页',
+                        cancelButtonText: '下载',
+                        type: 'warning'
+                    }).then(() => {
+                        this.$message({
+                            type: 'success',
+                            message: '页脚可以下载哦!'
+                        });
+                    }).catch(() => {
+                        window.location.href="./侯小益简历21.1.pdf"
+                    });
+                }
+            },
+            mounted() {
+                let that=this;
+                that.open()
             }
-            })
-           
+        })
     </script>
 </body>
 
